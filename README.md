@@ -75,3 +75,22 @@ revisión; después entra como `docente.demo` (o como administrador), revísala 
 
 > **Importante:** borra estos usuarios (en `/admin/users/`, como administrador) o cambia su contraseña
 > antes de publicar el blog en internet. Contraseñas conocidas en un servidor público son un riesgo.
+
+
+## Cómo he desplegado el proyecto
+
+### Comandos utilizados
+
+    sudo apt install git openssh-client php-cli php-sqlite3 php-xml php-mbstring php-intl php-curl unzip composer
+    git clone https://github.com/eduumunoz/miniblog.git
+    cd miniblog
+    composer install
+    php bin/console create-schema
+    php bin/console app:create-user admin "Administrador"
+    php -S localhost:8000 -t public
+
+### Problemas encontrados
+
+- Mi URL de origin estaba mal escrita y el push fallaba; la corregí con git remote set-url.
+- GitHub no aceptó mi contraseña; tuve que crear un token personal con permisos sobre el repositorio.
+- Abrí un pull request por error hacia el repositorio del profesor; lo cerré y lo abrí hacia mi fork.
